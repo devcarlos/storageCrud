@@ -49,17 +49,15 @@ export class StorageService {
   }
 
   // Delete
-  deleteItem(id: Number): Promise<any> {
+  deleteItem(item: Item): Promise<any> {
     return this.storage.get(ITEMS_KEY).then((items: Item[]) => {
       if (!items || items.length === 0) { 
         return null;
       }
+
+      console.log('ITEMS => ', items);
        
-      let keepItems = items.filter(element => {
-        if (id !== element.id) {
-          return element;
-        }
-      });
+      let keepItems = items.filter(element => element.id !== item.id);
 
       console.log('KEEP ITEMS => ', keepItems);
 

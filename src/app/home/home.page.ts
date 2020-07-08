@@ -57,8 +57,8 @@ export class HomePage {
   }
 
   // DELETE
-  deleteItem(id: number) {
-    this.storageService.deleteItem(id).then(item => {
+  deleteItem(item: Item) {
+    this.storageService.deleteItem(item).then(item => {
       this.showToast('Item Deleted!');
       this.mylist.closeSlidingItems()
       this.loadItems();
